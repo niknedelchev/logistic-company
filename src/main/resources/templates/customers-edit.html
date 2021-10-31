@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<title>Logistic customer app</title>
+</head>
+
+<body>
+	<h3>Edit the customer</h3>
+	
+	 <form action="#" th:action="@{/customers/edit/{id}(id=${customer.id})}" th:object="${customer}" th:method="post">
+     	<p>First name: <input type="text" th:field="*{firstName}" /></p>
+     	<p>Last name: <input type="text" th:field="*{LastName}" /></p>
+     	<p>Address: <input type="text" th:field="*{address}" /></p>
+     	<p>User: <input type="text" th:field="*{user.email}" /></p>
+        <p><input type="submit" value="Submit" /></p>
+    </form>
+
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

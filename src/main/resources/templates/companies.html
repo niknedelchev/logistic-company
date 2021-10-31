@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<title>Logistic company app</title>
+</head>
+
+<body>
+	<h1>Companies</h1>
+	<br />
+
+	<table>
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Address</th>
+				<th>Edit</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:if="${companies.empty}">
+				<td colspan="2">No companies available</td>
+			</tr>
+			<tr th:each="company : ${companies}">
+				<td><span th:text="${company.id}"> </span></td>
+				<td><span th:text="${company.name}"> </span></td>
+				<td><span th:text="${company.address}"> </span></td>
+				<td><a th:href="@{/companies/edit/{id}(id=${company.id})}">Edit</a></td>
+				<td><a th:href="@{/companies/delete/{id}(id=${company.id})}">Delete</a></td>
+			</tr>
+		</tbody>
+	</table>
+
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
