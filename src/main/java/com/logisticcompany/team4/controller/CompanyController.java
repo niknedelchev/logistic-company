@@ -11,66 +11,52 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.logisticcompany.team4.model.Company;
-import com.logisticcompany.team4.repository.CompanyRepository;
+import com.logisticcompany.team4.services.CompanyServices;
 
 @Controller
 public class CompanyController {
 
 	@Autowired
-	private CompanyRepository companyRepository;
-	
+	private CompanyServices companyServices;
+
 	@GetMapping(path = "/companies")
 	public String showCompaniesPage(Model model) {
-		
-		List<Company> companies = companyRepository.findAll();
+		List<Company> companies = companyServices.findAll();
 		model.addAttribute("companies", companies);
-		
+
 		return "companies";
 	}
-	
+
 	@GetMapping(path = "/companies/add")
 	public String showAddCompanyPage(Model model) {
 		model.addAttribute("company", new Company());
-		
 		return "companies-add";
 	}
-	
+
 	@PostMapping(path = "/companies/add")
 	public String addCompany(@ModelAttribute Company company) {
-		companyRepository.save(company);
-		
+		companyServices.addCompany(company);
+
 		return "redirect:/companies";
 	}
-	
+
 	@GetMapping("/companies/edit/{id}")
 	public String showUpdateForm(@PathVariable("id") int id, Model model) {
-	    Company company = companyRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid company Id:" + id));
-	    
-	    model.addAttribute("company", company);
-	    return "companies-edit";
+		Company company = companyServices.getCompanyById(id);
+		model.addAttribute("company", company);
+		return "companies-edit";
 	}
-	
+
 	@PostMapping("/companies/edit/{id}")
 	public String updateCompany(@ModelAttribute Company company) throws Exception {
+		companyServices.updateCompany(company);
+		return "redirect:/companies";
+	}
 
-		Company companyInDB = companyRepository.findById(company.getId()).orElse(null);
-		if (companyInDB != null) {
-			companyInDB.setName(company.getName());
-			companyInDB.setAddress(company.getAddress());
-			companyRepository.save(companyInDB);
-		} else {
-			throw new Exception("Company not found");
-		}
-		
-	    return "redirect:/companies";
-	}
-	    
 	@GetMapping("/companies/delete/{id}")
-	public String deleteCompany(@PathVariable("id") int id, Model model) {
-	    Company company = companyRepository.findById(id)
-	      .orElseThrow(() -> new IllegalArgumentException("Invalid company Id:" + id));
-	    companyRepository.delete(company);
-	    return "redirect:/companies";
+	public String deleteCompany(@PathVariable("id") int id) {
+		companyServices.deleteCompany(id);
+		return "redirect:/companies";
 	}
-	
+
 }

@@ -31,20 +31,17 @@ public class Employee {
 	@JoinColumn(name = "office_id", nullable = false)
 	Office office;
 	
-	@ManyToOne
-	@JoinColumn(name = "company_id", nullable = false)
-	Company company;
 	
 	public Employee() {
 	}
 
-	public Employee(int id, String firstName, String lastName, EmployeeType employeeType, User user, Company company) {
+	public Employee(int id, String firstName, String lastName, EmployeeType employeeType, Office office, User user) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.employeeType = employeeType;
+		this.office = office;
 		this.user = user;
-		this.company = company;
 	}
 
 	public int getId() {
@@ -87,12 +84,4 @@ public class Employee {
 		this.user = user;
 	}
 
-	public Company getCompany() {
-		return company;
-	}
-
-	public void setCompany(Company company) {
-		this.company = company;
-	}
-	
 }

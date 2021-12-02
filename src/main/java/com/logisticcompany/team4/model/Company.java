@@ -24,19 +24,14 @@ public class Company {
 	@OneToMany(mappedBy =  "company")
 	List<Office> offices;
 	
-	@OneToMany(mappedBy =  "company")
-	List<Employee> employees;
-	
-	
 	public Company() {
 	}
 
-	public Company(int id, String name, String address, List<Office> offices, List<Employee> employees) {
+	public Company(int id, String name, String address, List<Office> offices) {
 		this.id = id;
 		this.name = name;
 		this.address = address;
 		this.offices = offices;
-		this.employees = employees;
 	}
 
 	public int getId() {
@@ -73,16 +68,6 @@ public class Company {
 
 	public void setOffices(List<Office> offices) {
 		this.offices = offices;
-	}
-
-
-	public List<Employee> getEmployees() {
-		return employees;
-	}
-
-
-	public void setEmployees(List<Employee> employees) {
-		this.employees = employees;
 	}
 
 }
