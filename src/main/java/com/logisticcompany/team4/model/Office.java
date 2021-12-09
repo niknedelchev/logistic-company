@@ -2,6 +2,7 @@ package com.logisticcompany.team4.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,7 +28,7 @@ public class Office {
 	@JoinColumn(name = "company_id", nullable = false)
 	Company company;
 
-	@OneToMany(mappedBy =  "office")
+	@OneToMany(mappedBy =  "office", cascade = CascadeType.ALL)
 	List<Employee> employees;
 
 	public Office() {

@@ -2,6 +2,7 @@ package com.logisticcompany.team4.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,7 +25,7 @@ public class Role {
 	String name;
 	RoleType roleType;
 	
-	@OneToMany(mappedBy =  "role")
+	@OneToMany(mappedBy =  "role", cascade = CascadeType.ALL)
 	List<User> users;
 
 	public Role() {
