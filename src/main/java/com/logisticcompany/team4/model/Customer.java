@@ -21,7 +21,7 @@ public class Customer {
 	String firstName;
 	String lastName;
 	
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name = "user_id", nullable = true)
 	User user;
 	

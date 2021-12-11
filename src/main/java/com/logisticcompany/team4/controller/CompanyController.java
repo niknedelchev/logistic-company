@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.logisticcompany.team4.model.Company;
 import com.logisticcompany.team4.services.CompanyServices;
@@ -57,6 +58,15 @@ public class CompanyController {
 	public String deleteCompany(@PathVariable("id") int id) {
 		companyServices.deleteCompany(id);
 		return "redirect:/companies";
+	}
+	
+	@GetMapping("/companies/profit/{id}")
+	@ResponseBody
+	public String getCompanyProfit(@PathVariable("id") int id) {
+		double revenues = companyServices.getRevenues(id);
+		double expenses = companyServices.getExpenses(id);
+		double profit = companyServices.getProfit(id);
+		return String.format("revenues: %.02f <br/> expenses: %.02f </br> profit: %.02f", revenues, expenses, profit);
 	}
 
 }

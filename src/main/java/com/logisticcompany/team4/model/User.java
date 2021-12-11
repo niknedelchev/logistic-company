@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -31,12 +32,18 @@ public class User {
 	@ManyToOne
 	@JoinColumn(name = "role_id", nullable = true)
 	Role role;
+	
+    @OneToOne(mappedBy = "user")
+    private Employee employee;
+    
+    @OneToOne(mappedBy = "user")
+    private Customer customer;
 
 	public User() {
 	}
 
 	public User(int id, String firstName, String lastName, String email, String username, String password,
-			boolean isActive, Role role) {
+			boolean isActive, Role role, Employee employee, Customer customer) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -45,6 +52,8 @@ public class User {
 		this.password = password;
 		this.isActive = isActive;
 		this.role = role;
+		this.employee = employee;
+		this.customer = customer;
 	}
 
 	public int getId() {
@@ -110,5 +119,22 @@ public class User {
 	public void setRole(Role role) {
 		this.role = role;
 	}
+
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+	
 
 }

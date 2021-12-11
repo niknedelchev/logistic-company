@@ -31,19 +31,29 @@ public class Parcel {
 	double weight;
 	String deliveryAddress;
 	double price;
+	
+	//additional feature
+	double transportCost;
+	
 	ParcelStatus parcelStatus;
+	
+	@ManyToOne
+	@JoinColumn(name = "office_id", nullable = true)
+	Office sentFromOffice;
 	
 	public Parcel() {
 	}
 
 	public Parcel(int id, Customer sender, Customer receiver, double weight, String deliveryAddress, double price,
-			ParcelStatus parcelStatus) {
+			double transportCost, Office sentFromOffice, ParcelStatus parcelStatus) {
 		this.id = id;
 		this.sender = sender;
 		this.receiver = receiver;
 		this.weight = weight;
 		this.deliveryAddress = deliveryAddress;
 		this.price = price;
+		this.transportCost = transportCost;
+		this.sentFromOffice = sentFromOffice;
 		this.parcelStatus = parcelStatus;
 	}
 
@@ -94,6 +104,14 @@ public class Parcel {
 	public void setPrice(double price) {
 		this.price = price;
 	}
+	
+	public double getTransportCost() {
+		return transportCost;
+	}
+
+	public void setTransportCost(double transportCost) {
+		this.transportCost = transportCost;
+	}
 
 	public ParcelStatus getParcelStatus() {
 		return parcelStatus;
@@ -101,6 +119,14 @@ public class Parcel {
 
 	public void setParcelStatus(ParcelStatus parcelStatus) {
 		this.parcelStatus = parcelStatus;
+	}
+
+	public Office getSentFromOffice() {
+		return sentFromOffice;
+	}
+
+	public void setSentFromOffice(Office sentFromOffice) {
+		this.sentFromOffice = sentFromOffice;
 	}
 
 }

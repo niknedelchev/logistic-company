@@ -24,21 +24,29 @@ public class Office {
 
 	String address;
 	
+	//additional feature
+	double rent;
+	
 	@ManyToOne
 	@JoinColumn(name = "company_id", nullable = false)
 	Company company;
-
+	
 	@OneToMany(mappedBy =  "office", cascade = CascadeType.ALL)
 	List<Employee> employees;
 
+	@OneToMany(mappedBy =  "sentFromOffice", cascade = CascadeType.ALL)
+	List<Parcel> parcels;
+	
 	public Office() {
 	}
 
-	public Office(int id, String address, Company company, List<Employee> employees) {
+	public Office(int id, String address, double rent, Company company, List<Employee> employees, List<Parcel> parcels ) {
 		this.id = id;
 		this.address = address;
+		this.rent = rent;
 		this.company = company;
 		this.employees = employees;
+		this.parcels = parcels;
 	}
 
 	public int getId() {
@@ -57,6 +65,14 @@ public class Office {
 		this.address = address;
 	}
 
+	public double getRent() {
+		return rent;
+	}
+
+	public void setRent(double rent) {
+		this.rent = rent;
+	}
+
 	public Company getCompany() {
 		return company;
 	}
@@ -71,6 +87,14 @@ public class Office {
 
 	public void setEmployees(List<Employee> employees) {
 		this.employees = employees;
+	}
+
+	public List<Parcel> getParcels() {
+		return parcels;
+	}
+
+	public void setParcels(List<Parcel> parcels) {
+		this.parcels = parcels;
 	}
 	
 }

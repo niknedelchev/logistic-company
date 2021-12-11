@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import constant.EmployeeType;
@@ -21,9 +22,13 @@ public class Employee {
 	int id;
 	String firstName;
 	String lastName;
+	
+	//additional feature
+	double salary;
+	
 	EmployeeType employeeType;
 	
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name = "user_id", nullable = true)
 	User user;
 
@@ -35,10 +40,11 @@ public class Employee {
 	public Employee() {
 	}
 
-	public Employee(int id, String firstName, String lastName, EmployeeType employeeType, Office office, User user) {
+	public Employee(int id, String firstName, String lastName, double salary, EmployeeType employeeType, Office office, User user) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.salary = salary;
 		this.employeeType = employeeType;
 		this.office = office;
 		this.user = user;
@@ -66,6 +72,14 @@ public class Employee {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+	
+	public double getSalary() {
+		return salary;
+	}
+
+	public void setSalary(double salary) {
+		this.salary = salary;
 	}
 
 	public EmployeeType getEmployeeType() {
