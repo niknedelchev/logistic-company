@@ -35,8 +35,6 @@ public class EmployeeServices {
     public void updateEmployee(@ModelAttribute Employee employee) throws Exception {
         Employee employeeInDB = employeeRepository.findById(employee.getId()).orElse(null);
         if (employeeInDB != null) {
-            employeeInDB.setFirstName(employee.getFirstName());
-            employeeInDB.setLastName(employee.getLastName());
             employeeInDB.setUser(employee.getUser());
             employeeRepository.save(employeeInDB);
         } else {

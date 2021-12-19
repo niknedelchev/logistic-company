@@ -38,8 +38,6 @@ public class CustomerServices {
     public void updateCustomer(@ModelAttribute Customer customer) throws Exception {
         Customer customerInDB = customerRepository.findById(customer.getId()).orElse(null);
         if (customerInDB != null) {
-            customerInDB.setFirstName(customer.getFirstName());
-            customerInDB.setLastName(customer.getLastName());
             customerInDB.setAddress(customer.getAddress());
             customerInDB.setUser(customer.getUser());
             customerRepository.save(customerInDB);

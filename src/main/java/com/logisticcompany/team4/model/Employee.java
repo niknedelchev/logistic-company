@@ -1,5 +1,6 @@
 package com.logisticcompany.team4.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,15 +21,13 @@ public class Employee {
 	@Column(name = "employee_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
-	String firstName;
-	String lastName;
-	
+
 	//additional feature
 	double salary;
 	
 	EmployeeType employeeType;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "user_id", nullable = true)
 	User user;
 
@@ -40,10 +39,8 @@ public class Employee {
 	public Employee() {
 	}
 
-	public Employee(int id, String firstName, String lastName, double salary, EmployeeType employeeType, Office office, User user) {
+	public Employee(int id, double salary, EmployeeType employeeType, Office office, User user) {
 		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
 		this.salary = salary;
 		this.employeeType = employeeType;
 		this.office = office;
@@ -58,22 +55,6 @@ public class Employee {
 		this.id = id;
 	}
 
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-	
 	public double getSalary() {
 		return salary;
 	}

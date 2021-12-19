@@ -1,7 +1,5 @@
 package com.logisticcompany.team4.services;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
@@ -69,8 +67,8 @@ public class DataInitializerService {
 		companyRepository.save(new Company(0, "Company A", "Street A", null));
 		companyRepository.save(new Company(0, "Company B", "Street B", null));
 
-		Company co1 = companyRepository.getById(1);
-		Company co2 = companyRepository.getById(2);
+		Company co1 = companyRepository.findById(1).get();
+		Company co2 = companyRepository.findById(2).get();
 
 		// Creating offices
 		officeRepository.save(new Office(0, "Street C", 500, co1, null, null));
@@ -80,28 +78,30 @@ public class DataInitializerService {
 		Office off2 = officeRepository.getById(2);
 
 		// Creating employees
-		employeeRepository.save(new Employee(0, "Andrew", "Andersen", 1500, EmployeeType.OFFICE_CLERK, off1, userRepository.getById(1)));
-		employeeRepository.save(new Employee(0, "Carmen", "Carlson", 1700, EmployeeType.OFFICE_CLERK, off2, userRepository.getById(3)));
-		employeeRepository.save(new Employee(0, "Elinor", "Elensen", 1400, EmployeeType.OFFICE_CLERK, off1, userRepository.getById(5)));
-		employeeRepository.save(new Employee(0, "George", "Gibson", 1800, EmployeeType.OFFICE_CLERK, off2, userRepository.getById(7)));
+		employeeRepository.save(new Employee(0, 1500, EmployeeType.OFFICE_CLERK, off1, userRepository.findById(1).get()));
+		employeeRepository.save(new Employee(0, 1700, EmployeeType.OFFICE_CLERK, off2, userRepository.findById(3).get()));
+		employeeRepository.save(new Employee(0, 1400, EmployeeType.OFFICE_CLERK, off1, userRepository.findById(5).get()));
+		employeeRepository.save(new Employee(0, 1800, EmployeeType.OFFICE_CLERK, off2, userRepository.findById(7).get()));
 
 		//Creating customers
-		customerRepository.save(new Customer(0,"Branden", "Burton",userRepository.getById(2), "Place A"));
-		customerRepository.save(new Customer(0,"Donald", "Dune", userRepository.getById(4), "Place B"));
-		customerRepository.save(new Customer(0,"Frank", "Flyman",userRepository.getById(6), "Place C"));
-		customerRepository.save(new Customer(0,"Harold", "Hudson",userRepository.getById(8), "Place D"));
+		customerRepository.save(new Customer(0, userRepository.findById(2).get(), "Place A"));
+		customerRepository.save(new Customer(0, userRepository.findById(4).get(), "Place B"));
+		customerRepository.save(new Customer(0, userRepository.findById(6).get(), "Place C"));
+		customerRepository.save(new Customer(0, userRepository.findById(8).get(), "Place D"));
+
 		
-		Customer cust1 = customerRepository.getById(1);
-		Customer cust2 = customerRepository.getById(2);
-		Customer cust3 = customerRepository.getById(3);
-		Customer cust4 = customerRepository.getById(4);
+		Customer cust1 = customerRepository.findById(1).get();
+		Customer cust2 = customerRepository.findById(2).get();
+		Customer cust3 = customerRepository.findById(3).get();
+		Customer cust4 = customerRepository.findById(4).get();
 		
 		//Creating Parcels
 		parcelRepository.save(new Parcel(0,cust1,cust2,2.50,"Place B", 12.95, 3.25, off1, ParcelStatus.IN_TRANSIT));
 		parcelRepository.save(new Parcel(0,cust3,cust4,1.45,"Place D", 10.99, 1.99, off2, ParcelStatus.IN_TRANSIT));
 		parcelRepository.save(new Parcel(0,cust4,cust1,3.40,"Place A", 18.45, 5.45, off1, ParcelStatus.DELIVERED));
 		parcelRepository.save(new Parcel(0,cust2,cust3,0.99,"Place C", 8.99, 1.45, off2, ParcelStatus.DELIVERED));
-		
+
+
 		System.out.println("Data initialization ends.");
 
 	}

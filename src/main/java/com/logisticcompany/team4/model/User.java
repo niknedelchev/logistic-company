@@ -1,5 +1,6 @@
 package com.logisticcompany.team4.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -36,7 +37,7 @@ public class User {
     @OneToOne(mappedBy = "user")
     private Employee employee;
     
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Customer customer;
 
 	public User() {

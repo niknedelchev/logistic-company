@@ -1,7 +1,9 @@
 package com.logisticcompany.team4.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,10 +20,8 @@ public class Customer {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 	
-	String firstName;
-	String lastName;
-	
-	@OneToOne
+	//cascade = CascadeType.ALL
+	@OneToOne(cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "user_id", nullable = true)
 	User user;
 	
@@ -32,10 +32,8 @@ public class Customer {
 	}
 
 
-	public Customer(int id, String firstName, String lastName, User user, String address) {
+	public Customer(int id, User user, String address) {
 		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
 		this.user = user;
 		this.address = address;
 	}
@@ -48,26 +46,6 @@ public class Customer {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-
-	public String getLastName() {
-		return lastName;
-	}
-
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
 	}
 
 
