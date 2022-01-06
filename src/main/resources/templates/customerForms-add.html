@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Logistic customer form app</title>
+</head>
+<body>
+<h3>Add a new customer form</h3>
+
+
+<form action="#" th:action="@{/customerForms/add}" th:object="${customerForm}" method="post">
+    <p>First name: <input type="text" th:field="*{CFirstName}" /></p>
+    <p>Last name: <input type="text" th:field="*{CLastName}" /></p>
+    <p>Email address: <input type="text" th:field="*{CEmailAddress}" /></p>
+    <p>Phone number: <input type="text" th:field="*{CPhoneNumber}" /></p>
+    <p>Content: <textarea th:field="*{content}" /></p>
+    <p>Company: <select name="relatedCompany">
+        <option th:each="company : ${companyList}" th:text="${company.name}" th:value="${company.id}"></option>
+    </select>
+    </p>
+    <p><input type="submit" value="Submit" /></p>
+</form>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

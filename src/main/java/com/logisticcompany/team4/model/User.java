@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import java.util.Optional;
 
 @Entity
 @Table(name = "users")
@@ -27,6 +28,7 @@ public class User {
 	
 	String username;
 	String password;
+
 	
 	boolean isActive;
 
@@ -40,8 +42,7 @@ public class User {
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Customer customer;
 
-	public User() {
-	}
+	public User(){ };
 
 	public User(int id, String firstName, String lastName, String email, String username, String password,
 			boolean isActive, Role role, Employee employee, Customer customer) {
@@ -136,6 +137,6 @@ public class User {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
-	
+
 
 }

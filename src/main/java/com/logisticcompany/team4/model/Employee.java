@@ -15,7 +15,7 @@ import constant.EmployeeType;
 
 @Entity
 @Table(name = "employees")
-public class Employee {
+public class Employee{
 
 	@Id
 	@Column(name = "employee_id")
@@ -69,6 +69,10 @@ public class Employee {
 
 	public void setEmployeeType(EmployeeType employeeType) {
 		this.employeeType = employeeType;
+	}
+
+	public Office getOffice() {
+		return office;
 	}
 
 	public User getUser() {

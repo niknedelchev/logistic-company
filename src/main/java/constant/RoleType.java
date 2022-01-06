@@ -1,5 +1,15 @@
 package constant;
 
 public enum RoleType {
-	CUSTOMER, EMPLOYEE
+	CUSTOMER("CUSTOMER"), EMPLOYEE("EMPLOYEE"), ADMIN("ADMIN");
+
+	private String roleName;
+	private RoleType(String roleName){
+		this.roleName = roleName;
+	}
+
+	@Override
+	public String toString() {
+		return roleName;
+	}
 }

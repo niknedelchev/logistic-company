@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Logistic customer app</title>
+</head>
+
+<body>
+<h3>Answer form</h3>
+
+<form action="#" th:action="@{/customerForms/{id} (id=${customerForm.id})}" th:object="${customerForm}" th:method="post">
+    <p>Content: <textarea th:field="*{content}" disabled/></p>
+    <p>Answer: <textarea th:field="*{answer}"/></p>
+    <p><input type="submit" value="Submit" /></p>
+</form>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

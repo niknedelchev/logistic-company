@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+    <link th:href="@{/css/customers.css}" rel="stylesheet" />
+    <link th:href="@{/css/customers-add.css}" rel="stylesheet" />
+    <link th:href="@{/css/customers-edit.css}" rel="stylesheet" />
+    <title>Logistic customer app</title>
+</head>
+
+<body>
+<div class="row">
+    <div class="navbar expanded">
+        <a class="col-2" href="./">
+            <img th:src="@{/images/logo.png}" class="logoImgMenu" alt="Logo" />
+        </a>
+        <a class="active" href="./companies">Companies</a>
+        <a href="./users">Users</a>
+        <a href="./customers">Customers</a>
+        <a href="./employees">Employees</a>
+        <a href="./offices">Office</a>
+        <a href="./parcel">Parcel</a>
+        <a href="./reports">Reports</a>
+        <a href="./operations">Operations</a>
+    </div>
+
+    <div class="textContainerN"></div>
+
+    <div class="textContainerN col-12">
+        <h1 class="h1">Edit a office</h1>
+    </div>
+
+    <div class="textContainerN">
+        <div class="formContainer1" id="left">
+            <div>Address:</div>
+            <div>Rent:</div>
+            <div>Company:</div>
+            <div>Employees:</div>
+            <div>Parcels:</div>
+        </div>
+        <div class="formContainer3" id="right">
+            <form action="#" th:action="@{/offices/edit/{id}(id=${office.id})}" th:object="${office}" th:method="post">
+                <div class="formContainer4"><input type="text" th:field="*{address}" /></div>
+                <div class="formContainer4"><input type="text" th:field="*{rent}" /></div>
+                <div class="formContainer4"><input type="text" th:field="*{company}" /></div>
+                <div class="formContainer4"><input type="text" th:field="*{employees}" /></div>
+                <div class="formContainer4"><input type="text" th:field="*{parcels}" /></div>
+                <div><input type="submit" value="Submit" /></div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

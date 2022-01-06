@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Logistic customer form app</title>
+</head>
+<body>
+<h1>CustomerForms</h1>
+<br />
+
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Email address</th>
+        <th>Phone number</th>
+        <th>content</th>
+        <th>Answer</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${unansweredForms.isEmpty()}">
+        <td colspan="2">No customer forms available</td>
+    </tr>
+    <tr th:each="customerForm : ${unansweredForms}">
+        <td><span th:text="${customerForm.id}"> </span></td>
+        <td><span th:text="${customerForm.CFirstName}"> </span></td>
+        <td><span th:text="${customerForm.CLastName}"> </span></td>
+        <td><span th:text="${customerForm.CEmailAddress}"> </span></td>
+        <td><span th:text="${customerForm.CPhoneNumber}"> </span></td>
+        <td><span th:text="${customerForm.content}"> </span></td>
+        <td><a th:href="@{/customerForms/answer/{id}(id=${customerForm.id})}">Answer</a></td>
+    </tr>
+    </tbody>
+</table>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
