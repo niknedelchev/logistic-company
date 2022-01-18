@@ -24,16 +24,21 @@ public class Company {
 
 	@OneToMany(mappedBy =  "company", cascade = CascadeType.ALL)
 	List<Office> offices;
-	
+
+	@OneToMany(mappedBy =  "relatedCompany", cascade = CascadeType.ALL)
+	List<CustomerForm> customerForms;
+
 	public Company() {
 	}
 
-	public Company(int id, String name, String address, List<Office> offices) {
+	public Company(int id, String name, String address, List<Office> offices, List<CustomerForm> customerForms) {
 		this.id = id;
 		this.name = name;
 		this.address = address;
 		this.offices = offices;
+		this.customerForms = customerForms;
 	}
+
 
 	public int getId() {
 		return id;
@@ -62,6 +67,9 @@ public class Company {
 		this.address = address;
 	}
 
+	public List<CustomerForm> getCustomerForms() {
+		return customerForms;
+	}
 
 	public List<Office> getOffices() {
 		return offices;

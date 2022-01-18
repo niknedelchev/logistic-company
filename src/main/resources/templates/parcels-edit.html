@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+    <link th:href="@{/css/customers.css}" rel="stylesheet" />
+    <link th:href="@{/css/customers-add.css}" rel="stylesheet" />
+    <link th:href="@{/css/customers-edit.css}" rel="stylesheet" />
+    <title>Logistic customer app</title>
+</head>
+
+<body>
+<div class="row">
+    <div class="navbar expanded">
+        <a class="col-1" href="./">
+            <img th:src="@{/images/logo.png}" class="logoImgMenu" alt="Logo" />
+        </a>
+        <a href="./parcels">Parcel</a>
+        <a href="./reports">Reports</a>
+        <a href="./customerForms/add">Ask questions</a>
+        <a href="./register">Register</a>
+        <a href="./login">LogIn</a>
+    </div>
+
+    <div class="textContainerN"></div>
+
+    <div class="textContainerN col-12">
+        <h1 class="h1">Edit a parcel</h1>
+    </div>
+
+    <div class="textContainerN">
+        <div class="formContainer1" id="left">
+            <div>Sender ID:</div>
+            <div>Receiver ID:</div>
+            <div>Office ID:</div>
+            <div>Delivery address:</div>
+            <div>Weight:</div>
+            <div>Transport cost:</div>
+            <div>Price:</div>
+            <div>Parcel status:</div>
+        </div>
+        <div class="formContainer3" id="right">
+            <form action="#" th:action="@{/parcels/edit/{id}(id=${parcel.id})}" th:object="${parcel}" th:method="post">
+                <div class="formContainer5"><input type="text" th:field="*{sender.id}" /></div>
+                <div class="formContainer5"><input type="text" th:field="*{receiver.id}" /></div>
+                <div class="formContainer5"><input type="text" th:field="*{sentFromOffice.id}" /></div>
+                <div class="formContainer5"><input type="text" th:field="*{deliveryAddress}" /></div>
+                <div class="formContainer5"><input type="text" th:field="*{weight}" /></div>
+                <div class="formContainer5"><input type="text" th:field="*{transportCost}" /></div>
+                <div class="formContainer5"><input type="text" th:field="*{price}" /></div>
+                <div class="formContainer5"><input type="text" th:field="*{parcelStatus}" /></div>
+                <div><input type="submit" value="Submit" /></div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
