@@ -25,24 +25,30 @@
     <div class="textContainerN"></div>
 
     <div class="textContainerN col-12">
-        <h1 class="h1">Add a new office</h1>
+        <h1 class="h1">Add a new parcel</h1>
     </div>
 
     <div class="textContainerN">
         <div class="formContainer1" id="left">
-            <div>Address:</div>
-            <div>Rent:</div>
-            <div>Company:</div>
-            <div>Employees:</div>
-            <div>Parcels:</div>
+            <div>Sender ID:</div>
+            <div>Receiver ID:</div>
+            <div>Office ID:</div>
+            <div>Delivery address:</div>
+            <div>Weight:</div>
+            <div>Transport cost:</div>
+            <div>Price:</div>
+            <div>Parcel status:</div>
         </div>
         <div class="formContainer2" id="right">
-            <form action="#" th:action="@{/offices/add}" th:object="${office}" method="post">
-                <div><input type="text" th:field="*{address}" /></div>
-                <div><input type="text" th:field="*{rent}" /></div>
-                <div><input type="text" th:field="*{company}" /></div>
-                <div><input type="text" th:field="*{employees}" /></div>
-                <div><input type="text" th:field="*{parcels}" /></div>
+            <form action="#" th:action="@{/parsels/add}" th:object="${parcel}" method="post">
+                <div class="formContainer4"><input type="text" th:field="*{sender.id}" /></div>
+                <div class="formContainer4"><input type="text" th:field="*{receiver.id}" /></div>
+                <div class="formContainer4"><input type="text" th:field="*{sentFromOffice}" /></div>
+                <div class="formContainer4"><input type="text" th:field="*{deliveryAddress}" /></div>
+                <div class="formContainer4"><input type="text" th:field="*{weight}" /></div>
+                <div class="formContainer4"><input type="text" th:field="*{transportCost}" /></div>
+                <div class="formContainer4"><input type="" th:field="*{price}" /></div>
+                <div class="formContainer4"><input type="text" th:field="*{parcelStatus}" /></div>
                 <div><input type="submit" value="Submit" /></div>
             </form>
         </div>

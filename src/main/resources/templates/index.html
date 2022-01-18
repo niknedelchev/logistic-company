@@ -12,17 +12,14 @@
 <body>
 <div class="row">
 	<div class="navbar expanded">
-		<a class="col-2" href="./">
+		<a class="col-1" href="./">
 			<img th:src="@{/images/logo.png}" class="logoImgMenu" alt="Logo" />
 		</a>
-		<a class="active" href="./companies">Companies</a>
-		<a href="./users">Users</a>
-		<a href="./customers">Customers</a>
-		<a href="./employees">Employees</a>
-		<a href="./offices">Office</a>
-		<a href="./parcel">Parcel</a>
+		<a href="./parcels">Parcel</a>
 		<a href="./reports">Reports</a>
-		<a href="./operations">Operations</a>
+		<a href="./customerForms/add">Ask questions</a>
+		<a href="./register">Register</a>
+		<a href="./login">LogIn</a>
 	</div>
 
 	<div class="textContainerN"></div>
@@ -69,20 +66,3 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>
-
-<!--<!DOCTYPE html>-->
-<!--<html xmlns:th="http://www.thymeleaf.org"-->
-<!--	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">-->
-<!--<head th:insert="fragments.html :: headerfiles"></head>-->
-<!--<body>-->
-<!--<header th:insert="fragments.html :: nav"></header>-->
-<!--	<div class = "container">-->
-<!--		<table>-->
-<!--			<tr>-->
-<!--				<td>Username</td>-->
-<!--				<td><span sec:authentication="name"></span></td>-->
-<!--			</tr>-->
-<!--		</table>-->
-<!--	</div>-->
-<!--</body>-->
-<!--</html>-->

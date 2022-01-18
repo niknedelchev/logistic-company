@@ -2,26 +2,59 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="ISO-8859-1">
-    <link rel="stylesheet"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <title>Logistic customer form app</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+    <link th:href="@{/css/customers.css}" rel="stylesheet" />
+    <link th:href="@{/css/customers-add.css}" rel="stylesheet" />
+    <title>Logistic customer app</title>
 </head>
+
 <body>
-<h3>Add a new customer form</h3>
+<div class="row">
+    <div class="navbar expanded">
+        <a class="col-1" href="./">
+            <img th:src="@{/images/logo.png}" class="logoImgMenu" alt="Logo" />
+        </a>
+        <a href="./parcels">Parcel</a>
+        <a href="./reports">Reports</a>
+        <a href="./customerForms/add">Ask questions</a>
+        <a href="./register">Register</a>
+        <a href="./login">LogIn</a>
+    </div>
 
+    <div class="textContainerN"></div>
 
-<form action="#" th:action="@{/customerForms/add}" th:object="${customerForm}" method="post">
-    <p>First name: <input type="text" th:field="*{CFirstName}" /></p>
-    <p>Last name: <input type="text" th:field="*{CLastName}" /></p>
-    <p>Email address: <input type="text" th:field="*{CEmailAddress}" /></p>
-    <p>Phone number: <input type="text" th:field="*{CPhoneNumber}" /></p>
-    <p>Content: <textarea th:field="*{content}" /></p>
-    <p>Company: <select name="relatedCompany">
-        <option th:each="company : ${companyList}" th:text="${company.name}" th:value="${company.id}"></option>
-    </select>
-    </p>
-    <p><input type="submit" value="Submit" /></p>
-</form>
+    <div class="textContainerN col-12">
+        <h1 class="h1">Add a question</h1>
+    </div>
+
+    <div class="textContainerN">
+        <div class="formContainer1" id="left">
+            <div>First name:</div>
+            <div>Last name:</div>
+            <div>Email:</div>
+            <div>Phone number:</div>
+            <div>Content:</div>
+            <div>Company:</div>
+        </div>
+        <div class="formContainer2" id="right">
+            <form action="#" th:action="@{/cuatomerForms/add}" th:object="${customerForm}" method="post">
+                <div><input type="text" th:field="*{CFirstName}" /></div>
+                <div><input type="text" th:field="*{CLastName}" /></div>
+                <div><input type="email" th:field="*{CEmailAddress}" /></div>
+                <div><input type="phone" th:field="*{CPhoneNumber}" /></div>
+                <div><textarea th:field="*{content}" /> </div>
+                <div>
+                    <select name="relatedCompany">
+                        <option th:each="company : ${companyList}" th:text="${company.name}" th:value="${company.id}"></option>
+                    </select>
+                </div>
+                <div><input type="submit" value="Submit" /></div>
+            </form>
+        </div>
+
+    </div>
+</div>
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
